@@ -1,0 +1,42 @@
+{
+  "name": "webhook-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "yarn run tsc",
+    "start": "node dist/index.js",
+    "dev": "yarn install && yarn run tsc -w | nodemon --legacy-watch dist/index.js",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint --fix ",
+    "test": "NODE_ENV=development mocha -r ts-node/register test/unitTests/**/*.ts",
+    "test:integration": "mocha -r ts-node/register test/integrationTests/**/*.ts"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "chai": "^4.2.0",
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.0.0",
+    "mocha": "^8.2.0",
+    "nodemon": "^2.0.6",
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.8",
+	  "@types/express": "^4.17.8",
+	  "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.14.5",
+    "@types/pg": "^7.14.5",
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+	  "express": "^4.17.1",
+    "pg": "^8.4.2",
+    "knex": "^0.21.8",
+    "ts-node": "^9.0.0"
+  }
+}

@@ -1,0 +1,27 @@
+version: "3.4"
+
+services:
+    webhook-api-prod:
+        build:
+            dockerfile: Dockerfile
+            context: ./
+        volumes:
+        - .:/workspace:rw
+        ports:
+        - "5570:8080"
+        restart: "no"
+        environment:
+            NODE_ENV: "production"
+    
+    webhook-api-dev:
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./
+        volumes:
+        - .:/workspace:rw
+        - /workspace/node_modules
+        ports:
+        - "5570:8080"
+        restart: "no"
+        environment:
+            NODE_ENV: "development"
