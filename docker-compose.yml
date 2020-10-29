@@ -33,6 +33,20 @@ services:
             SQL_PORT: 5432
         depends_on:
             - db
+
+    webhook-api-unit-tests:
+        build:
+            dockerfile: Dockerfile.unitTests
+            context: ./
+        volumes:
+        - .:/workspace:rw
+        - /workspace/node_modules
+        ports:
+        - "9876:8080"
+        restart: "no"
+        environment:
+            NODE_ENV: "unitTest"
+            STORAGE_MODE: "memory"
     
     db:
         image: "postgres:10.3"

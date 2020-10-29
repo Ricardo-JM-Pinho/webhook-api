@@ -1,6 +1,6 @@
 import { Webhook } from "../../types"
 
-export async function webhookCreate(webhook: Webhook, db): boolean {
+export async function webhookCreate(webhook: Webhook, db): Promise<boolean|void> {
 	let createdHook = null
 	try {
 		createdHook = await db('webhooks').insert({
@@ -10,7 +10,9 @@ export async function webhookCreate(webhook: Webhook, db): boolean {
 	} catch (e) {
 		console.log("Error:", e)
 	}
-	if (!createdHook || !createdHook.rowCount) throw new Error('Could not insert row in created table.')
+	if (!createdHook || !createdHook.rowCount) {
+		throw new Error('Could not insert row in created table.')
+	}
 	return true
 }
 
