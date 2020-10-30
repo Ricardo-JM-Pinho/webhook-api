@@ -8,8 +8,8 @@
     "dev": "yarn install && yarn run tsc -w | nodemon --legacy-watch dist/index.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint --fix ",
-    "test": "mocha -r ts-node/register test/unitTests.ts",
-    "test:integration": "mocha -r ts-node/register test/integrationTests.ts"
+    "test": "NODE_ENV=unitTest mocha -r ts-node/register test/unitTests.ts",
+    "test:integration": "NODE_ENV=integrationTest mocha -r ts-node/register test/integrationTests.ts"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",

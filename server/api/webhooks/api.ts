@@ -7,7 +7,7 @@ import { mode, webhooksInMemory } from '../../index'
 
 export async function postWebhookCreate(req, res) {
 	const { url, token } = req.body
-    return res.sendStatus(200)
+
 	// body validation 
 	if (typeof url !== 'string') return res.status(400).json({ error: "missing or wrong type of parameter 'url'" })
 	if (typeof token !== 'string') return res.status(400).json({ error: "missing or wrong type of parameter 'token'" })
@@ -39,8 +39,8 @@ export async function postWebhookCreate(req, res) {
 	return res.sendStatus(200)
 }
 
-export async function postWebhookTest(req, res) {
-	/*const { payload, token } = req.body
+export async function postWebhookTest(req, res, strict = false) {
+	const { payload, token } = req.body
 
 	//Check for token to avoid infinite loop
 	if (token) return res.status(400).json({ error: "request must not include parameter 'token'" })
@@ -64,7 +64,7 @@ export async function postWebhookTest(req, res) {
 			break;
 		}
 	}
-	if(!webhooksArray) {
+	if(!webhooksArray || !webhooksArray.length) {
 		return res.status(400).json({ error: "could not retrieve webhooks", message: err })
 	}
 
@@ -81,8 +81,9 @@ export async function postWebhookTest(req, res) {
 		})
 		.catch(error => {
 			console.error(`	${error.message}`)
+			if(strict) return res.status(400).json({ error: "could not call endpoint", message: error.message })
 		})
 	})
 
-	return res.sendStatus(200)*/
+	return res.sendStatus(200)
 }
