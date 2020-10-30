@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "yarn run tsc",
-    "start": "node dist/index.js",
+    "start": "yarn build && node dist/index.js",
     "dev": "yarn install && yarn run tsc -w | nodemon --legacy-watch dist/index.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint --fix ",

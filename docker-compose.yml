@@ -7,11 +7,20 @@ services:
             context: ./
         volumes:
         - .:/workspace:rw
+        - /workspace/node_modules
         ports:
         - "9876:8080"
         restart: "no"
         environment:
             NODE_ENV: "production"
+            STORAGE_MODE: "db"
+            SQL_USER: "postgres"
+            SQL_PASSWORD: "supersecurepassword"
+            SQL_DATABASE: "webhook"
+            SQL_HOST: db
+            SQL_PORT: 5432
+        depends_on:
+            - db
     
     webhook-api-dev:
         build:
