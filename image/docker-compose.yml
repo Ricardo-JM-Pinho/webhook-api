@@ -83,7 +83,7 @@ services:
         restart: on-failure
         volumes:
             - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-            - ./sql-data:/var/lib/postgresql/data
+            - ../sql-data:/var/lib/postgresql/data
         environment:
             POSTGRES_USER: "postgres"
             POSTGRES_PASSWORD: "supersecurepassword"

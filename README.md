@@ -7,8 +7,12 @@
 
 ## How to run
 * Clone the repo
-* $ cd into the repo
-* $ docker-compose up webhook-api-prod
+* open the terminal in the repository's folder
+* move into the _image/_ folder
+* run the following command:
+```
+docker-compose up webhook-api-prod
+```
 * Send a Post request to : http://localhost:9876/api/webhooks with a url and a token
 * Test that the webhook is being called by sending a Post request to : http://localhost:9876/api/webhooks/test
 
